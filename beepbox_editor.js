@@ -244,21 +244,32 @@ var beepbox;
     Config.drumPitchFilterMult = [100.0, 8.0, 100.0, 100.0, 1.0,];
     Config.drumWaveIsSoft = [false, true, false, false, true,];
     Config._drumWaves = [null, null, null, null, null,];
-    Config.filterNames = ["none", "bright", "medium", "soft", "decay bright", "decay medium", "decay soft"];
-    Config.filterBases = [0.0, 2.0, 3.5, 5.0, 1.0, 2.5, 4.0];
-    Config.filterDecays = [0.0, 0.0, 0.0, 0.0, 10.0, 7.0, 4.0];
-    Config.filterVolumes = [0.2, 0.4, 0.7, 1.0, 0.5, 0.75, 1.0];
+    
+    Config.filterNames = ["none", "bright", "medium", "soft", "decay bright", "decay medium", "decay soft", "ring", "muffled", "submerged", "shift", "overtone"];
+    Config.filterBases = [0.0, 2.0, 3.5, 5.0, 1.0, 2.5, 4.0, -1.0, 4.0, 6.0, 0.0, 1.0];
+    Config.filterDecays = [0.0, 0.0, 0.0, 0.0, 10.0, 7.0, 4.0, 0.2, 0.2, 0.3, 0.0, 0.0];
+    Config.filterVolumes = [0.2, 0.4, 0.7, 1.0, 0.5, 0.75, 1.0, 0.5, 0.75, 0.4, 0.4, 1.0];
+
     Config.transitionNames = ["seamless", "sudden", "smooth", "slide"];
-    Config.effectNames = ["none", "vibrato light", "vibrato delayed", "vibrato heavy", "tremolo light", "tremolo heavy"];
-    Config.effectVibratos = [0.0, 0.15, 0.3, 0.45, 0.0, 0.0];
-    Config.effectTremolos = [0.0, 0.0, 0.0, 0.0, 0.25, 0.5];
-    Config.effectVibratoDelays = [0, 0, 3, 0, 0, 0];
-    Config.chorusNames = ["union", "shimmer", "hum", "honky tonk", "dissonant", "fifths", "octaves", "bowed", "custom harmony"];
-    Config.chorusIntervals = [0.0, 0.02, 0.05, 0.1, 0.25, 3.5, 6, 0.02, 0.05];
-    Config.chorusOffsets = [0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 6, 0.0, 0.0];
-    Config.chorusVolumes = [0.7, 0.8, 1.0, 1.0, 0.9, 0.9, 0.8, 1.0, 1.0];
-    Config.chorusSigns = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0];
-    Config.chorusHarmonizes = [false, false, false, false, false, false, false, false, true];
+    Config.effectNames = ["none", "vibrato light", "vibrato delayed", "vibrato heavy", "tremolo light", "tremolo heavy", "alien", "stutter", "strum"];
+    Config.effectVibratos = [0.0, 0.15, 0.3, 0.45, 0.0, 0.0, 1.0, 0.0, 0.05];
+    Config.effectTremolos = [0.0, 0.0, 0.0, 0.0, 0.25, 0.5, 0.0, 1.0, 0.025];
+    Config.effectVibratoDelays = [0, 0, 3, 0, 0, 0, 0, 0, 0];
+
+    Config.chorusNames =     ["union", "shimmer", "hum", "honky tonk", "dissonant", "fifths", "octaves", "bowed", "custom harmony", "spinner", "detune", "rising", "vibrate", "fourths", "bass", "dirty", "stationary"];
+    Config.chorusIntervals = [0.0,     0.02,      0.05,  0.1,          0.25,        3.5,      6,         0.02,    0.05,             0.02, 0.0, 1.0, 3.5, 4, 0, 0.0, 3.5];
+    Config.chorusOffsets =   [0.0,     0.0,       0.0,   0.0,          0.0,         3.5,      6,         0.0,     0.0,              0.0, 0.25, 0.7, 7, 4, -7, 0.1, 0];
+    Config.chorusVolumes =   [0.7,     0.8,       1.0,   1.0,          0.9,         0.9,      0.8,       1.0,     1.0,              1.0, 1.0, 0.95, 0.975, 0.95, 1.0, 0.975, 0.9];
+    Config.chorusSigns =     [1.0,     1.0,       1.0,   1.0,          1.0,         1.0,      1.0,      -1.0,     1.0,              1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+    Config.chorusHarmonizes = [false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false];
+
+    /*
+    Music.chorusNames = ["union", "shimmer", "hum", "honky tonk", "dissonant", "fifths", "octaves", "spinner", "detune", "bowed", "rising", "vibrate", "fourths", "bass", "dirty", "stationary"];
+    Music.chorusValues = [0.0, 0.02, 0.05, 0.1, 0.25, 3.5, 6, 0.02, 0.0, 0.02, 1.0, 3.5, 4, 0, 0.0, 3.5];
+    Music.chorusOffsets = [0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 6, 0.0, 0.25, 0.0, 0.7, 7, 4, -7, 0.1, 0];
+    Music.chorusVolumes = [0.9, 0.9, 1.0, 1.0, 0.95, 0.95, 0.9, 1.0, 1.0, 1.0, 0.95, 0.975, 0.95, 1.0, 0.975, 0.9];
+*/
+
     Config.volumeNames = ["loudest", "loud", "medium", "quiet", "quietest", "mute"];
     Config.volumeValues = [0.0, 0.5, 1.0, 1.5, 2.0, -1.0];
     Config.operatorCount = 4;
