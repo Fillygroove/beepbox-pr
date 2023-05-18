@@ -393,14 +393,46 @@ var beepbox;
     ];
     Config.pitchChannelTypeNames = ["chip", "FM (expert)"];
     Config.instrumentTypeNames = ["chip", "FM", "noise"];
-    Config.pitchChannelColorsDim = ["#0099a1", "#a1a100", "#c75000", "#00a100", "#d020d0", "#7777b0"];
-    Config.pitchChannelColorsBright = ["#25f3ff", "#ffff25", "#ff9752", "#50ff50", "#ff90ff", "#a0a0ff"];
-    Config.pitchNoteColorsDim = ["#00bdc7", "#c7c700", "#ff771c", "#00c700", "#e040e0", "#8888d0"];
-    Config.pitchNoteColorsBright = ["#92f9ff", "#ffff92", "#ffcdab", "#a0ffa0", "#ffc0ff", "#d0d0ff"];
-    Config.drumChannelColorsDim = ["#6f6f6f", "#996633"];
-    Config.drumChannelColorsBright = ["#aaaaaa", "#ddaa77"];
-    Config.drumNoteColorsDim = ["#aaaaaa", "#cc9966"];
-    Config.drumNoteColorsBright = ["#eeeeee", "#f0d0bb"];
+
+    function darkenByPercent(array) {
+        let out = [];
+
+        for (let i = 0; i < array.length; i++) {
+            let color = array[i];
+            let percent = -25;
+            
+            let R = parseInt(color.substring(1, 3), 16);
+            let G = parseInt(color.substring(3, 5), 16);
+            let B = parseInt(color.substring(5, 7), 16);    
+
+            R = parseInt(R * (100 + percent) / 100);
+            G = parseInt(G * (100 + percent) / 100);
+            B = parseInt(B * (100 + percent) / 100);
+
+            R = (R < 255) ? R : 255;
+            G = (G < 255) ? G : 255;
+            B = (B < 255) ? B : 255;
+
+            var RR = R.toString(16).padStart(2, 0);
+            var GG = G.toString(16).padStart(2, 0);
+            var BB = B.toString(16).padStart(2, 0);
+
+            out.push(`#${RR + GG + BB}`);
+        }
+
+        return out;
+    }
+
+    Config.pitchChannelColorsBright = ["#ffe869", "#fc7677", "#768dfc", "#7ef67e", "#feb376", "#ae76fc", "#6bf4ff", "#efeff5"];
+    Config.drumChannelColorsBright = ["#00b2e1", "#f14e54", "#00e16e", "#bf7ff5"];
+    Config.pitchChannelColorsDim = darkenByPercent(Config.pitchChannelColorsBright);
+    Config.drumChannelColorsDim = darkenByPercent(Config.drumChannelColorsBright);
+
+    Config.pitchNoteColorsBright = Config.pitchChannelColorsBright
+    Config.pitchNoteColorsDim = Config.pitchChannelColorsDim;
+    Config.drumNoteColorsDim = Config.drumChannelColorsDim;
+    Config.drumNoteColorsBright = Config.drumChannelColorsBright;
+
     Config.midiPitchChannelNames = ["cyan channel", "yellow channel", "orange channel", "green channel", "purple channel", "blue channel"];
     Config.midiDrumChannelNames = ["gray channel", "brown channel"];
     Config.midiSustainInstruments = [
@@ -430,9 +462,9 @@ var beepbox;
     Config.pitchCount = 37;
     Config.maxPitch = 84;
     Config.pitchChannelCountMin = 1;
-    Config.pitchChannelCountMax = 6;
+    Config.pitchChannelCountMax = 8;
     Config.drumChannelCountMin = 0;
-    Config.drumChannelCountMax = 2;
+    Config.drumChannelCountMax = 4;
     Config.waves = [
         Config._centerWave([1.0 / 15.0, 3.0 / 15.0, 5.0 / 15.0, 7.0 / 15.0, 9.0 / 15.0, 11.0 / 15.0, 13.0 / 15.0, 15.0 / 15.0, 15.0 / 15.0, 13.0 / 15.0, 11.0 / 15.0, 9.0 / 15.0, 7.0 / 15.0, 5.0 / 15.0, 3.0 / 15.0, 1.0 / 15.0, -1.0 / 15.0, -3.0 / 15.0, -5.0 / 15.0, -7.0 / 15.0, -9.0 / 15.0, -11.0 / 15.0, -13.0 / 15.0, -15.0 / 15.0, -15.0 / 15.0, -13.0 / 15.0, -11.0 / 15.0, -9.0 / 15.0, -7.0 / 15.0, -5.0 / 15.0, -3.0 / 15.0, -1.0 / 15.0]),
         Config._centerWave([1.0, -1.0]),
